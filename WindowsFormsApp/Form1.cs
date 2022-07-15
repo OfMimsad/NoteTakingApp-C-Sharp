@@ -57,9 +57,16 @@ namespace WindowsFormsApp
 
         private void LoadButtom_Click(object sender, EventArgs e)
         {
+            try
+            {
             titleBox.Text = notes.Rows[perviousNotes.CurrentCell.RowIndex].ItemArray[0].ToString();
             noteBox.Text = notes.Rows[perviousNotes.CurrentCell.RowIndex].ItemArray[1].ToString();
             editing = true;
+            }
+            catch
+            {
+                MessageBox.Show("You don't have any note to load");
+            }
         }
 
         private void NewNoteButtom_Click(object sender, EventArgs e)
@@ -70,10 +77,30 @@ namespace WindowsFormsApp
 
         private void SaveButtom_Click(object sender, EventArgs e)
         {
-            notes.Rows[perviousNotes.CurrentCell.RowIndex]["Title"] = titleBox.Text;
-            notes.Rows[perviousNotes.CurrentCell.RowIndex]["Note"] = titleBox.Text;
+            if (editing)
+            {
+                notes.Rows[perviousNotes.CurrentCell.RowIndex]["Title"] = titleBox.Text;
+                notes.Rows[perviousNotes.CurrentCell.RowIndex]["Note"] = noteBox.Text;
+            }
+            else
+            {
+                notes.Rows.Add(titleBox.Text, noteBox.Text);
+            }
+            titleBox.Text = "";
+            noteBox.Text = "";
+            editing = false;
+        }
 
+    private void perviousNotes_CellContentClick(object sender, EventArgs e)
+        {
 
+        }
+
+        private void perviousNotes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            titleBox.Text = notes.Rows[perviousNotes.CurrentCell.RowIndex].ItemArray[0].ToString();
+            noteBox.Text = notes.Rows[perviousNotes.CurrentCell.RowIndex].ItemArray[1].ToString();
+            editing = true;
         }
     }
 }

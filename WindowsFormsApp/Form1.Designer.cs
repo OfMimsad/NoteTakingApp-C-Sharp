@@ -80,12 +80,15 @@
             // 
             // perviousNotes
             // 
+            this.perviousNotes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.perviousNotes.BackgroundColor = System.Drawing.Color.White;
             this.perviousNotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.perviousNotes.Location = new System.Drawing.Point(5, 9);
             this.perviousNotes.Name = "perviousNotes";
             this.perviousNotes.Size = new System.Drawing.Size(374, 331);
             this.perviousNotes.TabIndex = 4;
+            this.perviousNotes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.perviousNotes_CellContentClick);
+            this.perviousNotes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.perviousNotes_CellDoubleClick);
             // 
             // LoadButtom
             // 
