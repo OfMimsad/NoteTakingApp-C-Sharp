@@ -59,7 +59,7 @@ namespace WindowsFormsApp
         {
             titleBox.Text = notes.Rows[perviousNotes.CurrentCell.RowIndex].ItemArray[0].ToString();
             noteBox.Text = notes.Rows[perviousNotes.CurrentCell.RowIndex].ItemArray[1].ToString();
-
+            editing = true;
         }
 
         private void NewNoteButtom_Click(object sender, EventArgs e)
@@ -70,6 +70,9 @@ namespace WindowsFormsApp
 
         private void SaveButtom_Click(object sender, EventArgs e)
         {
+            notes.Rows[perviousNotes.CurrentCell.RowIndex]["Title"] = titleBox.Text;
+            notes.Rows[perviousNotes.CurrentCell.RowIndex]["Note"] = titleBox.Text;
+
 
         }
     }
